@@ -42,5 +42,8 @@ dependencies {
     implementation 'com.android.support:recyclerview-v7:28.0.0-alpha3'
     implementation 'com.android.support:design:28.0.0'
     implementation 'me.riddhimanadib.bottom-nav-bar:bottom-nav-bar:1.0.1'
+    implementation 'com.squareup.picasso:picasso:2.71828'
+    implementation 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 
 }
