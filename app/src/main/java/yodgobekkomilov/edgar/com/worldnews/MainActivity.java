@@ -13,11 +13,12 @@ import me.riddhimanadib.library.BottomBarHolderActivity;
 import me.riddhimanadib.library.NavigationPage;
 import yodgobekkomilov.edgar.com.worldnews.news.AllJazeeraFragment;
 import yodgobekkomilov.edgar.com.worldnews.news.BBCFragment;
+import yodgobekkomilov.edgar.com.worldnews.news.CBCNewsFragment;
 import yodgobekkomilov.edgar.com.worldnews.news.CNNFragment;
-import yodgobekkomilov.edgar.com.worldnews.news.RussianTodayFragment;
 
 
-public class MainActivity extends BottomBarHolderActivity implements AllJazeeraFragment.OnFragmentInteractionListener, BBCFragment.OnFragmentInteractionListener, CNNFragment.OnFragmentInteractionListener, RussianTodayFragment.OnFragmentInteractionListener {
+
+public class MainActivity extends BottomBarHolderActivity implements AllJazeeraFragment.OnFragmentInteractionListener, BBCFragment.OnFragmentInteractionListener, CNNFragment.OnFragmentInteractionListener, CBCNewsFragment.OnFragmentInteractionListener {
 
 
     //    private ApiService apiService;
@@ -39,10 +40,10 @@ public class MainActivity extends BottomBarHolderActivity implements AllJazeeraF
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        NavigationPage page1 = new NavigationPage("Home", ContextCompat.getDrawable(this, R.mipmap.ic_launcher), AllJazeeraFragment.newInstance());
-        NavigationPage page2 = new NavigationPage("Support", ContextCompat.getDrawable(this, R.mipmap.ic_launcher), CNNFragment.newInstance());
-        NavigationPage page3 = new NavigationPage("Billing", ContextCompat.getDrawable(this, R.mipmap.ic_launcher), AllJazeeraFragment.newInstance());
-        NavigationPage page4 = new NavigationPage("Profile", ContextCompat.getDrawable(this, R.mipmap.ic_launcher), RussianTodayFragment.newInstance());
+        NavigationPage page1 = new NavigationPage("AllJazeera", ContextCompat.getDrawable(this, R.drawable.alljazeera), AllJazeeraFragment.newInstance());
+        NavigationPage page2 = new NavigationPage("Support", ContextCompat.getDrawable(this, R.drawable.bbc_icon), CNNFragment.newInstance());
+        NavigationPage page3 = new NavigationPage("Billing", ContextCompat.getDrawable(this, R.drawable.cnn_icon), AllJazeeraFragment.newInstance());
+        NavigationPage page4 = new NavigationPage("Profile", ContextCompat.getDrawable(this, R.drawable.cbc_icon), CBCNewsFragment.newInstance());
 
         List<NavigationPage> navigationPages = new ArrayList<>();
         navigationPages.add(page1);

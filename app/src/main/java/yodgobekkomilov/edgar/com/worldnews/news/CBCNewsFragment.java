@@ -9,12 +9,12 @@ import android.view.ViewGroup;
 
 import yodgobekkomilov.edgar.com.worldnews.R;
 
-public class RussianTodayFragment extends Fragment {
+public class CBCNewsFragment extends Fragment {
 
-    private RussianTodayFragment.OnFragmentInteractionListener listener;
+    private CBCNewsFragment.OnFragmentInteractionListener listener;
 
-    public static RussianTodayFragment newInstance() {
-        return new RussianTodayFragment();
+    public static CBCNewsFragment newInstance() {
+        return new CBCNewsFragment();
     }
 
     @Override
@@ -30,8 +30,8 @@ public class RussianTodayFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof RussianTodayFragment.OnFragmentInteractionListener) {
-            listener = (RussianTodayFragment.OnFragmentInteractionListener) context;
+        if (context instanceof CBCNewsFragment.OnFragmentInteractionListener) {
+            listener = (CBCNewsFragment.OnFragmentInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString() + " must implement OnFragmentInteractionListener");
         }
