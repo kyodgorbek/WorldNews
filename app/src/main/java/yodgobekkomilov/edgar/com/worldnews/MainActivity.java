@@ -24,22 +24,14 @@ public class MainActivity extends BottomBarHolderActivity implements AllJazeeraF
     //    private ApiService apiService;
 
 
-//    @BindView(R.id.coordinator_layout)
-//    CoordinatorLayout coordinatorLayout;
-//
-//    @BindView(R.id.recycler_view)
-//    RecyclerView recyclerView;
-//
-//    @BindView(R.id.txt_empty_notes_view)
-//    TextView noNotesView;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
-        setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
+       // getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+
+
         NavigationPage page1 = new NavigationPage("AllJazeera", ContextCompat.getDrawable(this, R.drawable.alljazeera), AllJazeeraFragment.newInstance());
         NavigationPage page2 = new NavigationPage("Support", ContextCompat.getDrawable(this, R.drawable.bbc_icon), CNNFragment.newInstance());
         NavigationPage page3 = new NavigationPage("Billing", ContextCompat.getDrawable(this, R.drawable.cnn_icon), AllJazeeraFragment.newInstance());
