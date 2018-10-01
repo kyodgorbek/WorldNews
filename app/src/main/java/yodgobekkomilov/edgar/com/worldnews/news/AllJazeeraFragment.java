@@ -42,7 +42,7 @@ public class AllJazeeraFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, final ViewGroup container, Bundle savedInstanceState) {
-         final View rootView = inflater.inflate(R.layout.alljazeera_fragment, container, false);
+        final View rootView = inflater.inflate(R.layout.alljazeera_fragment, container, false);
 
         NewsInterface apiService = NewsClient.getApiService();
         Call<List<Article>> call = apiService.getAllJazeera();
@@ -52,7 +52,7 @@ public class AllJazeeraFragment extends Fragment {
             public void onResponse(Call<List<Article>> call, Response<List<Article>> response) {
 
                 articleList = response.body();
-                recyclerView =  (RecyclerView) rootView.findViewById(R.id.recycler_view);
+                recyclerView = (RecyclerView) rootView.findViewById(R.id.recycler_view);
                 adapter = new NewsAdapter(articleList);
                 RecyclerView.LayoutManager eLayoutManager = new LinearLayoutManager(getActivity());
                 recyclerView.setLayoutManager(eLayoutManager);
@@ -66,13 +66,13 @@ public class AllJazeeraFragment extends Fragment {
             }
         });
 
-      return rootView;
+        return rootView;
     }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof RussianTodayFragment.OnFragmentInteractionListener) {
+        if (context instanceof AllJazeeraFragment.OnFragmentInteractionListener) {
             listener = (AllJazeeraFragment.OnFragmentInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString() + " must implement OnFragmentInteractionListener");
