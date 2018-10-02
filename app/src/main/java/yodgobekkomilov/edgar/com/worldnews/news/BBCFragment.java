@@ -14,7 +14,7 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
+import yodgobekkomilov.edgar.com.worldnews.Pojo.Article;
 import yodgobekkomilov.edgar.com.worldnews.Pojo.ArticleResponse;
 import yodgobekkomilov.edgar.com.worldnews.R;
 import yodgobekkomilov.edgar.com.worldnews.adapter.NewsAdapter;

@@ -9,13 +9,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import yodgobekkomilov.edgar.com.worldnews.Pojo.Article;
 import yodgobekkomilov.edgar.com.worldnews.Pojo.ArticleResponse;
 import yodgobekkomilov.edgar.com.worldnews.R;
+
 import yodgobekkomilov.edgar.com.worldnews.adapter.NewsAdapter;
 import yodgobekkomilov.edgar.com.worldnews.internet.NewsClient;
 import yodgobekkomilov.edgar.com.worldnews.internet.NewsInterface;
@@ -24,7 +27,7 @@ public class AllJazeeraFragment extends Fragment {
 
 
     public NewsAdapter adapter;
-    public ArticleResponse articleList;
+  public   ArrayList<Article> articleList=new ArrayList<>();
     RecyclerView recyclerView;
 
     private AllJazeeraFragment.OnFragmentInteractionListener listener;
@@ -51,9 +54,9 @@ public class AllJazeeraFragment extends Fragment {
             @Override
             public void onResponse(Call <ArticleResponse> call, Response <ArticleResponse> response) {
 
-                articleList = response.body();
-                recyclerView =  rootView.findViewById(R.id.recycler_view);
-                adapter = new NewsAdapter((List<ArticleResponse>) articleList);
+                articleList = new ArrayList(response.body().getArticles);
+                        recyclerView =  rootView.findViewById(R.id.recycler_view);
+                adapter = new NewsAdapter(articleList);
                 RecyclerView.LayoutManager eLayoutManager = new LinearLayoutManager(getActivity());
                 recyclerView.setLayoutManager(eLayoutManager);
                 recyclerView.setAdapter(adapter);

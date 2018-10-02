@@ -10,11 +10,13 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+import yodgobekkomilov.edgar.com.worldnews.Pojo.Article;
 import yodgobekkomilov.edgar.com.worldnews.Pojo.ArticleResponse;
 import yodgobekkomilov.edgar.com.worldnews.R;
 
@@ -23,7 +25,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
 
     private List <ArticleResponse> articleList;
 
-    public NewsAdapter(List<ArticleResponse> articleList) {
+    public NewsAdapter(ArrayList<Article> articleList) {
         this.articleList = articleList;
     }
 
