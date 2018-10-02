@@ -14,7 +14,7 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import yodgobekkomilov.edgar.com.worldnews.Pojo.Article;
+import yodgobekkomilov.edgar.com.worldnews.Pojo.ArticleResponse;
 import yodgobekkomilov.edgar.com.worldnews.R;
 import yodgobekkomilov.edgar.com.worldnews.adapter.NewsAdapter;
 import yodgobekkomilov.edgar.com.worldnews.internet.NewsClient;
@@ -24,7 +24,7 @@ public class AllJazeeraFragment extends Fragment {
 
 
     public NewsAdapter adapter;
-    public List<Article> articleList;
+    public ArticleResponse articleList;
     RecyclerView recyclerView;
 
     private AllJazeeraFragment.OnFragmentInteractionListener listener;
@@ -45,15 +45,15 @@ public class AllJazeeraFragment extends Fragment {
         final View rootView = inflater.inflate(R.layout.alljazeera_fragment, container, false);
 
         NewsInterface apiService = NewsClient.getApiService();
-        Call<List<Article>> call = apiService.getAllJazeera();
+        Call <ArticleResponse> call = apiService.getAllJazeera();
 
-        call.enqueue(new Callback<List<Article>>() {
+        call.enqueue(new Callback <ArticleResponse>() {
             @Override
-            public void onResponse(Call<List<Article>> call, Response<List<Article>> response) {
+            public void onResponse(Call <ArticleResponse> call, Response <ArticleResponse> response) {
 
                 articleList = response.body();
-                recyclerView = (RecyclerView) rootView.findViewById(R.id.recycler_view);
-                adapter = new NewsAdapter(articleList);
+                recyclerView =  rootView.findViewById(R.id.recycler_view);
+                adapter = new NewsAdapter((List<ArticleResponse>) articleList);
                 RecyclerView.LayoutManager eLayoutManager = new LinearLayoutManager(getActivity());
                 recyclerView.setLayoutManager(eLayoutManager);
                 recyclerView.setAdapter(adapter);
@@ -61,7 +61,7 @@ public class AllJazeeraFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<List<Article>> call, Throwable t) {
+            public void onFailure(Call <ArticleResponse> call, Throwable t) {
 
             }
         });

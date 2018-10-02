@@ -14,15 +14,16 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import yodgobekkomilov.edgar.com.worldnews.Pojo.Article;
+
+import yodgobekkomilov.edgar.com.worldnews.Pojo.ArticleResponse;
 import yodgobekkomilov.edgar.com.worldnews.R;
 
 public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder> {
 
 
-    private List<Article> articleList;
+    private List <ArticleResponse> articleList;
 
-    public NewsAdapter(List<Article> articleList) {
+    public NewsAdapter(List<ArticleResponse> articleList) {
         this.articleList = articleList;
     }
 
@@ -38,7 +39,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull NewsViewHolder newsViewHolder, int i) {
-        Article article = articleList.get(i);
+        ArticleResponse article = articleList.get(i);
         newsViewHolder.articleAuthor.setText(article.getAuthor());
         newsViewHolder.articleTitle.setText(article.getTitle());
         newsViewHolder.articleDescription.setText(article.getDescription());
@@ -51,7 +52,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
     @Override
     public int getItemCount() {
 
-        return articleList.size();
+        return 0;
     }
 
     public final static class NewsViewHolder extends RecyclerView.ViewHolder {

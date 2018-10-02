@@ -3,7 +3,7 @@ package yodgobekkomilov.edgar.com.worldnews.Pojo;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Article {
+public class ArticleResponse {
 
     @SerializedName("source")
     @Expose
