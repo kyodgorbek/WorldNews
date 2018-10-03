@@ -9,12 +9,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import yodgobekkomilov.edgar.com.worldnews.Pojo.Article;
 import yodgobekkomilov.edgar.com.worldnews.Pojo.ArticleResponse;
 import yodgobekkomilov.edgar.com.worldnews.R;
 import yodgobekkomilov.edgar.com.worldnews.adapter.NewsAdapter;
@@ -26,7 +28,7 @@ public class CBCNewsFragment extends Fragment {
     private CBCNewsFragment.OnFragmentInteractionListener listener;
     NewsAdapter adapter;
     RecyclerView recyclerView;
-    ArticleResponse articleList;
+    public ArrayList<Article> articleList = new ArrayList();
 
     public static CBCNewsFragment newInstance() {
         return new CBCNewsFragment();
@@ -48,9 +50,9 @@ public class CBCNewsFragment extends Fragment {
             @Override
             public void onResponse(Call <ArticleResponse> call, Response <ArticleResponse> response) {
 
-                articleList = response.body();
+                articleList = new ArrayList<>(response.body().getArticles());
                 recyclerView = (RecyclerView) rootView.findViewById(R.id.recycler_view);
-                adapter = new NewsAdapter((List<ArticleResponse>) articleList);
+                adapter = new NewsAdapter( articleList);
                 RecyclerView.LayoutManager eLayoutManager = new LinearLayoutManager(getActivity());
                 recyclerView.setLayoutManager(eLayoutManager);
                 recyclerView.setAdapter(adapter);

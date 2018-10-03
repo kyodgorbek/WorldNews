@@ -3,95 +3,42 @@ package yodgobekkomilov.edgar.com.worldnews.Pojo;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 public class ArticleResponse {
 
-    @SerializedName("source")
+    @SerializedName("status")
     @Expose
-    private Source source;
-    @SerializedName("author")
+    private String status;
+    @SerializedName("totalResults")
     @Expose
-    private String author;
-    @SerializedName("title")
+    private Integer totalResults;
+    @SerializedName("articles")
     @Expose
-    private String title;
-    @SerializedName("description")
-    @Expose
-    private String description;
-    @SerializedName("url")
-    @Expose
-    private String url;
-    @SerializedName("urlToImage")
-    @Expose
-    private String urlToImage;
-    @SerializedName("publishedAt")
-    @Expose
-    private String publishedAt;
-    @SerializedName("content")
-    @Expose
-    private String content;
+    private List<Article> articles = null;
 
-    public Source getSource() {
-        return source;
+    public String getStatus() {
+        return status;
     }
 
-    public void setSource(Source source) {
-        this.source = source;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
-    public String getAuthor() {
-        return author;
+    public Integer getTotalResults() {
+        return totalResults;
     }
 
-    public void setAuthor(String author) {
-        this.author = author;
+    public void setTotalResults(Integer totalResults) {
+        this.totalResults = totalResults;
     }
 
-    public String getTitle() {
-        return title;
+    public List<Article> getArticles() {
+        return articles;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    public String getUrlToImage() {
-        return urlToImage;
-    }
-
-    public void setUrlToImage(String urlToImage) {
-        this.urlToImage = urlToImage;
-    }
-
-    public String getPublishedAt() {
-        return publishedAt;
-    }
-
-    public void setPublishedAt(String publishedAt) {
-        this.publishedAt = publishedAt;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
+    public void setArticles(List<Article> articles) {
+        this.articles = articles;
     }
 
 }

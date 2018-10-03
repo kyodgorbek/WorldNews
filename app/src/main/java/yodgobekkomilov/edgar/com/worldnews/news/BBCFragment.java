@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -24,9 +25,10 @@ import yodgobekkomilov.edgar.com.worldnews.internet.NewsInterface;
 public class BBCFragment extends Fragment {
 
     private OnFragmentInteractionListener listener;
-    ArticleResponse articleList;
+
     RecyclerView recyclerView;
     NewsAdapter adapter;
+    public ArrayList<Article> articleList = new ArrayList();
     public static BBCFragment newInstance() {
         return new BBCFragment();
     }
@@ -47,9 +49,9 @@ public class BBCFragment extends Fragment {
             @Override
             public void onResponse(Call<ArticleResponse> call, Response <ArticleResponse> response) {
 
-                articleList = response.body();
+                articleList = new ArrayList(response.body().getArticles());
                 recyclerView = (RecyclerView) rootView.findViewById(R.id.recycler_view);
-                adapter = new NewsAdapter((List<ArticleResponse>) articleList);
+                adapter = new NewsAdapter(articleList);
                 RecyclerView.LayoutManager eLayoutManager = new LinearLayoutManager(getActivity());
                 recyclerView.setLayoutManager(eLayoutManager);
                 recyclerView.setAdapter(adapter);

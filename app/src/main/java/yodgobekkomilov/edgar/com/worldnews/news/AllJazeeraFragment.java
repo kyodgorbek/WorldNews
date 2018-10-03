@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -18,7 +17,6 @@ import retrofit2.Response;
 import yodgobekkomilov.edgar.com.worldnews.Pojo.Article;
 import yodgobekkomilov.edgar.com.worldnews.Pojo.ArticleResponse;
 import yodgobekkomilov.edgar.com.worldnews.R;
-
 import yodgobekkomilov.edgar.com.worldnews.adapter.NewsAdapter;
 import yodgobekkomilov.edgar.com.worldnews.internet.NewsClient;
 import yodgobekkomilov.edgar.com.worldnews.internet.NewsInterface;
@@ -27,7 +25,7 @@ public class AllJazeeraFragment extends Fragment {
 
 
     public NewsAdapter adapter;
-  public   ArrayList<Article> articleList=new ArrayList<>();
+    public ArrayList<Article> articleList = new ArrayList();
     RecyclerView recyclerView;
 
     private AllJazeeraFragment.OnFragmentInteractionListener listener;
@@ -48,14 +46,14 @@ public class AllJazeeraFragment extends Fragment {
         final View rootView = inflater.inflate(R.layout.alljazeera_fragment, container, false);
 
         NewsInterface apiService = NewsClient.getApiService();
-        Call <ArticleResponse> call = apiService.getAllJazeera();
+        Call<ArticleResponse> call = apiService.getAllJazeera();
 
-        call.enqueue(new Callback <ArticleResponse>() {
+        call.enqueue(new Callback<ArticleResponse>() {
             @Override
-            public void onResponse(Call <ArticleResponse> call, Response <ArticleResponse> response) {
+            public void onResponse(Call<ArticleResponse> call, Response<ArticleResponse> response) {
 
-                articleList = new ArrayList(response.body().getArticles);
-                        recyclerView =  rootView.findViewById(R.id.recycler_view);
+                articleList = new ArrayList(response.body().getArticles());
+                recyclerView = rootView.findViewById(R.id.recycler_view);
                 adapter = new NewsAdapter(articleList);
                 RecyclerView.LayoutManager eLayoutManager = new LinearLayoutManager(getActivity());
                 recyclerView.setLayoutManager(eLayoutManager);
@@ -64,7 +62,7 @@ public class AllJazeeraFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call <ArticleResponse> call, Throwable t) {
+            public void onFailure(Call<ArticleResponse> call, Throwable t) {
 
             }
         });

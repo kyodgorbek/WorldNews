@@ -23,9 +23,10 @@ import yodgobekkomilov.edgar.com.worldnews.R;
 public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder> {
 
 
-    private List <ArticleResponse> articleList;
+    private List <Article> articleList;
 
-    public NewsAdapter(ArrayList<Article> articleList) {
+    public NewsAdapter(List<Article> articleList) {
+
         this.articleList = articleList;
     }
 
@@ -41,7 +42,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull NewsViewHolder newsViewHolder, int i) {
-        ArticleResponse article = articleList.get(i);
+        Article article = articleList.get(i);
         newsViewHolder.articleAuthor.setText(article.getAuthor());
         newsViewHolder.articleTitle.setText(article.getTitle());
         newsViewHolder.articleDescription.setText(article.getDescription());
@@ -54,7 +55,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
     @Override
     public int getItemCount() {
 
-        return 0;
+        return articleList.size();
     }
 
     public final static class NewsViewHolder extends RecyclerView.ViewHolder {
