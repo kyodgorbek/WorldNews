@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
 import yodgobekkomilov.edgar.com.worldnews.Pojo.Article;
 import yodgobekkomilov.edgar.com.worldnews.Pojo.ArticleResponse;
 import yodgobekkomilov.edgar.com.worldnews.R;
@@ -25,10 +24,10 @@ import yodgobekkomilov.edgar.com.worldnews.internet.NewsInterface;
 public class CNNFragment extends Fragment {
 
 
-    private CNNFragment.OnFragmentInteractionListener listener;
-    NewsAdapter adapter;
     public ArrayList<Article> articleList = new ArrayList();
+    NewsAdapter adapter;
     RecyclerView recyclerView;
+    private CNNFragment.OnFragmentInteractionListener listener;
 
     public static CNNFragment newInstance() {
         return new CNNFragment();
@@ -45,9 +44,9 @@ public class CNNFragment extends Fragment {
         NewsInterface apiService = NewsClient.getApiService();
         Call<ArticleResponse> call = apiService.getCNN();
 
-        call.enqueue(new Callback <ArticleResponse>() {
+        call.enqueue(new Callback<ArticleResponse>() {
             @Override
-            public void onResponse(Call <ArticleResponse> call, Response <ArticleResponse> response) {
+            public void onResponse(Call<ArticleResponse> call, Response<ArticleResponse> response) {
 
                 articleList = new ArrayList(response.body().getArticles());
                 recyclerView = (RecyclerView) rootView.findViewById(R.id.recycler_view);
@@ -59,7 +58,7 @@ public class CNNFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call <ArticleResponse> call, Throwable t) {
+            public void onFailure(Call<ArticleResponse> call, Throwable t) {
 
             }
         });

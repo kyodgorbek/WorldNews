@@ -3,7 +3,7 @@ package yodgobekkomilov.edgar.com.worldnews.internet;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class NewsClient  {
+public class NewsClient {
 
     public static final String BASE_URL = "https://newsapi.org/";
 
@@ -25,5 +25,5 @@ public class NewsClient  {
     public static NewsInterface getApiService() {
         return getRetrofitInstance().create(NewsInterface.class);
     }
-    }
+}
 

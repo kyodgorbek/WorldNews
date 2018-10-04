@@ -23,11 +23,11 @@ import yodgobekkomilov.edgar.com.worldnews.internet.NewsInterface;
 
 public class BBCFragment extends Fragment {
 
-    private OnFragmentInteractionListener listener;
-
+    public ArrayList<Article> articleList = new ArrayList();
     RecyclerView recyclerView;
     NewsAdapter adapter;
-    public ArrayList<Article> articleList = new ArrayList();
+    private OnFragmentInteractionListener listener;
+
     public static BBCFragment newInstance() {
         return new BBCFragment();
     }
@@ -39,14 +39,14 @@ public class BBCFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-       final  View rootView = inflater.inflate(R.layout.bbc_fragment, container, false);
+        final View rootView = inflater.inflate(R.layout.bbc_fragment, container, false);
 
         NewsInterface apiService = NewsClient.getApiService();
-        Call <ArticleResponse> call = apiService.getBBC();
+        Call<ArticleResponse> call = apiService.getBBC();
 
-        call.enqueue(new Callback <ArticleResponse>() {
+        call.enqueue(new Callback<ArticleResponse>() {
             @Override
-            public void onResponse(Call<ArticleResponse> call, Response <ArticleResponse> response) {
+            public void onResponse(Call<ArticleResponse> call, Response<ArticleResponse> response) {
 
                 articleList = new ArrayList(response.body().getArticles());
                 recyclerView = (RecyclerView) rootView.findViewById(R.id.recycler_view);

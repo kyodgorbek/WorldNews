@@ -8,6 +8,18 @@ import com.google.gson.annotations.SerializedName;
 
 public class Article implements Parcelable {
 
+    @SuppressWarnings("unused")
+    public static final Parcelable.Creator<Article> CREATOR = new Parcelable.Creator<Article>() {
+        @Override
+        public Article createFromParcel(Parcel in) {
+            return new Article(in);
+        }
+
+        @Override
+        public Article[] newArray(int size) {
+            return new Article[size];
+        }
+    };
     @SerializedName("source")
     @Expose
     private Source source;
@@ -33,7 +45,16 @@ public class Article implements Parcelable {
     @Expose
     private String content;
 
-
+    public Article(Parcel in) {
+        source = (Source) in.readValue(Source.class.getClassLoader());
+        author = in.readString();
+        title = in.readString();
+        description = in.readString();
+        url = in.readString();
+        urlToImage = in.readString();
+        publishedAt = in.readString();
+        content = in.readString();
+    }
 
     public Source getSource() {
         return source;
@@ -99,22 +120,6 @@ public class Article implements Parcelable {
         this.content = content;
     }
 
-
-
-
-
-
-    public Article(Parcel in) {
-        source = (Source) in.readValue(Source.class.getClassLoader());
-        author = in.readString();
-        title = in.readString();
-        description = in.readString();
-        url = in.readString();
-        urlToImage = in.readString();
-        publishedAt = in.readString();
-        content = in.readString();
-    }
-
     @Override
     public int describeContents() {
         return 0;
@@ -131,17 +136,4 @@ public class Article implements Parcelable {
         dest.writeString(publishedAt);
         dest.writeString(content);
     }
-
-    @SuppressWarnings("unused")
-    public static final Parcelable.Creator<Article> CREATOR = new Parcelable.Creator<Article>() {
-        @Override
-        public Article createFromParcel(Parcel in) {
-            return new Article(in);
-        }
-
-        @Override
-        public Article[] newArray(int size) {
-            return new Article[size];
-        }
-    };
 }

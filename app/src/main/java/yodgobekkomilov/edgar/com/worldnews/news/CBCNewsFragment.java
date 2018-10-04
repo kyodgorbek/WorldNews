@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
 import yodgobekkomilov.edgar.com.worldnews.Pojo.Article;
 import yodgobekkomilov.edgar.com.worldnews.Pojo.ArticleResponse;
 import yodgobekkomilov.edgar.com.worldnews.R;
@@ -24,10 +23,10 @@ import yodgobekkomilov.edgar.com.worldnews.internet.NewsInterface;
 
 public class CBCNewsFragment extends Fragment {
 
-    private CBCNewsFragment.OnFragmentInteractionListener listener;
+    public ArrayList<Article> articleList = new ArrayList();
     NewsAdapter adapter;
     RecyclerView recyclerView;
-    public ArrayList<Article> articleList = new ArrayList();
+    private CBCNewsFragment.OnFragmentInteractionListener listener;
 
     public static CBCNewsFragment newInstance() {
         return new CBCNewsFragment();
@@ -43,15 +42,15 @@ public class CBCNewsFragment extends Fragment {
         final View rootView = inflater.inflate(R.layout.cbc_fragment, container, false);
 
         NewsInterface apiService = NewsClient.getApiService();
-        Call <ArticleResponse> call = apiService.getCbC();
+        Call<ArticleResponse> call = apiService.getCbC();
 
-        call.enqueue(new Callback <ArticleResponse>() {
+        call.enqueue(new Callback<ArticleResponse>() {
             @Override
-            public void onResponse(Call <ArticleResponse> call, Response <ArticleResponse> response) {
+            public void onResponse(Call<ArticleResponse> call, Response<ArticleResponse> response) {
 
                 articleList = new ArrayList<>(response.body().getArticles());
                 recyclerView = (RecyclerView) rootView.findViewById(R.id.recycler_view);
-                adapter = new NewsAdapter( articleList);
+                adapter = new NewsAdapter(articleList);
                 RecyclerView.LayoutManager eLayoutManager = new LinearLayoutManager(getActivity());
                 recyclerView.setLayoutManager(eLayoutManager);
                 recyclerView.setAdapter(adapter);
@@ -59,7 +58,7 @@ public class CBCNewsFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call <ArticleResponse> call, Throwable t) {
+            public void onFailure(Call<ArticleResponse> call, Throwable t) {
 
             }
         });

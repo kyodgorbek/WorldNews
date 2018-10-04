@@ -21,8 +21,9 @@ import yodgobekkomilov.edgar.com.worldnews.news.DetailActivity;
 
 public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder> {
 
+    public static final String urlKey = "urlKey";
 
-    private List<Article> articleList;
+    private final List<Article> articleList;
 
     public NewsAdapter(List<Article> articleList) {
 
@@ -40,8 +41,8 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
     }
 
     @Override
-    public void onBindViewHolder(@NonNull NewsViewHolder newsViewHolder, int i) {
-        Article article = articleList.get(i);
+    public void onBindViewHolder(@NonNull NewsViewHolder newsViewHolder, final int i) {
+        final Article article = articleList.get(i);
         newsViewHolder.articleAuthor.setText(article.getAuthor());
         newsViewHolder.articleTitle.setText(article.getTitle());
         newsViewHolder.articleDescription.setText(article.getDescription());
@@ -51,14 +52,13 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), DetailActivity.class);
 //start the activity from the view/context
+
+                intent.putExtra("urlKey", article.getUrl());
                 view.getContext().startActivity(intent);
             }
         });
 
     }
-
-
-
 
 
     @Override
@@ -82,8 +82,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
         @BindView(R.id.article_Description)
         TextView articleDescription;
 
-        @BindView(R.id.article_Url)
-        TextView articleUrl;
+
 
 
         public NewsViewHolder(View itemView) {
