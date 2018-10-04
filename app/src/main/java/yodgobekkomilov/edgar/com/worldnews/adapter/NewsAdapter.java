@@ -1,5 +1,6 @@
 package yodgobekkomilov.edgar.com.worldnews.adapter;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,20 +11,18 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-
 import yodgobekkomilov.edgar.com.worldnews.Pojo.Article;
-import yodgobekkomilov.edgar.com.worldnews.Pojo.ArticleResponse;
 import yodgobekkomilov.edgar.com.worldnews.R;
+import yodgobekkomilov.edgar.com.worldnews.news.DetailActivity;
 
 public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder> {
 
 
-    private List <Article> articleList;
+    private List<Article> articleList;
 
     public NewsAdapter(List<Article> articleList) {
 
@@ -47,9 +46,19 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
         newsViewHolder.articleTitle.setText(article.getTitle());
         newsViewHolder.articleDescription.setText(article.getDescription());
         Picasso.get().load(article.getUrlToImage()).into(newsViewHolder.articleImage);
-
+        newsViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), DetailActivity.class);
+//start the activity from the view/context
+                view.getContext().startActivity(intent);
+            }
+        });
 
     }
+
+
+
 
 
     @Override
@@ -58,9 +67,11 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
         return articleList.size();
     }
 
+
     public final static class NewsViewHolder extends RecyclerView.ViewHolder {
         // TextView articleAuthor, articleTitle, articleDescription, articleUrl;
         //  ImageView articleImage;
+
         @BindView(R.id.article_Image)
         ImageView articleImage;
         @BindView(R.id.article_Author)
@@ -79,6 +90,9 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
             super(itemView);
             ButterKnife.bind(this, itemView);
 
+
         }
+
+
     }
 }
