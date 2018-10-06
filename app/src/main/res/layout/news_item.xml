@@ -40,6 +40,16 @@
             android:text="TextView" />
 
         <TextView
+            android:id="@+id/article_Date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:text="TextView" />
+
+        <TextView
             android:id="@+id/article_Description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
