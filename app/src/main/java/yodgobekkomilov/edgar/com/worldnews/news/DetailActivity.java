@@ -8,6 +8,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.ImageView;
+
+import com.squareup.picasso.Picasso;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -17,6 +20,8 @@ import yodgobekkomilov.edgar.com.worldnews.R;
 public class DetailActivity extends AppCompatActivity {
     @BindView(R.id.article)
     public WebView article_webview;
+    @BindView(R.id.articleImage)
+    public ImageView article_Image;
 
 
     @Override
@@ -37,7 +42,10 @@ public class DetailActivity extends AppCompatActivity {
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         article_webview.getSettings().setJavaScriptEnabled(true);
         String url = getIntent().getExtras().getString("urlKey");
+        String imageUrl = getIntent().getExtras().getString("imageUrl");
+        Picasso.get().load(imageUrl).into(article_Image);
         article_webview.setWebViewClient(new WebViewClient());
+
         article_webview.loadUrl(url);
 
 

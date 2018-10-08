@@ -17,12 +17,11 @@ import yodgobekkomilov.edgar.com.worldnews.news.BBCFragment;
 import yodgobekkomilov.edgar.com.worldnews.news.CBCNewsFragment;
 import yodgobekkomilov.edgar.com.worldnews.news.CNNFragment;
 import yodgobekkomilov.edgar.com.worldnews.news.DetailActivity;
-import yodgobekkomilov.edgar.com.worldnews.news.Menu;
 
 
 public class MainActivity extends BottomBarHolderActivity implements AllJazeeraFragment.OnFragmentInteractionListener, BBCFragment.OnFragmentInteractionListener, CNNFragment.OnFragmentInteractionListener, CBCNewsFragment.OnFragmentInteractionListener {
 
-
+    final int Bottom_CAPACITY = 7;
     //    private ApiService apiService;
     public static final String url_key = "urlKey";
     public ArrayList<Article> articleList = new ArrayList<>();
@@ -44,15 +43,20 @@ public class MainActivity extends BottomBarHolderActivity implements AllJazeeraF
         NavigationPage page2 = new NavigationPage("BBC", ContextCompat.getDrawable(this, R.drawable.bbc_icon), CNNFragment.newInstance());
         NavigationPage page3 = new NavigationPage("CNN", ContextCompat.getDrawable(this, R.drawable.cnn_icon), AllJazeeraFragment.newInstance());
         NavigationPage page4 = new NavigationPage("CBC", ContextCompat.getDrawable(this, R.drawable.cbc_icon), CBCNewsFragment.newInstance());
-        NavigationPage page5 = new NavigationPage("Menu", ContextCompat.getDrawable(this, R.drawable.icon_menu), Menu.newInstance());
-        List<NavigationPage> navigationPages = new ArrayList<>();
+        //NavigationPage page5 = new NavigationPage("Menu", ContextCompat.getDrawable(this, R.drawable.icon_menu), Menu.newInstance());
+        List<NavigationPage> navigationPages = new ArrayList<>(Bottom_CAPACITY);
+        Boolean navigation = navigationPages.size() > 6;
         navigationPages.add(page1);
         navigationPages.add(page2);
         navigationPages.add(page3);
         navigationPages.add(page4);
-        navigationPages.add(page5);
+
+
         super.setupBottomBarHolderActivity(navigationPages);
+
+
     }
+
 
 
     public void onClicked() {
