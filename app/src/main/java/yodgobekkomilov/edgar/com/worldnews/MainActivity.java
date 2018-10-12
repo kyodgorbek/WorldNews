@@ -21,9 +21,9 @@ import yodgobekkomilov.edgar.com.worldnews.news.DetailActivity;
 
 public class MainActivity extends BottomBarHolderActivity implements AllJazeeraFragment.OnFragmentInteractionListener, BBCFragment.OnFragmentInteractionListener, CNNFragment.OnFragmentInteractionListener, CBCNewsFragment.OnFragmentInteractionListener {
 
-    final int Bottom_CAPACITY = 7;
     //    private ApiService apiService;
     public static final String url_key = "urlKey";
+    final int Bottom_CAPACITY = 7;
     public ArrayList<Article> articleList = new ArrayList<>();
 
 
@@ -39,7 +39,7 @@ public class MainActivity extends BottomBarHolderActivity implements AllJazeeraF
 //        // using the (String name, Parcelable value) overload!
 //        startActivity(i);
 
-        NavigationPage page1 = new NavigationPage("AllJazeera", ContextCompat.getDrawable(this, R.drawable.alljazeera), AllJazeeraFragment.newInstance());
+        NavigationPage page1 = new NavigationPage("All Jazeera", ContextCompat.getDrawable(this, R.drawable.alljazeera), AllJazeeraFragment.newInstance());
         NavigationPage page2 = new NavigationPage("BBC", ContextCompat.getDrawable(this, R.drawable.bbc_icon), CNNFragment.newInstance());
         NavigationPage page3 = new NavigationPage("CNN", ContextCompat.getDrawable(this, R.drawable.cnn_icon), AllJazeeraFragment.newInstance());
         NavigationPage page4 = new NavigationPage("CBC", ContextCompat.getDrawable(this, R.drawable.cbc_icon), CBCNewsFragment.newInstance());
@@ -56,7 +56,6 @@ public class MainActivity extends BottomBarHolderActivity implements AllJazeeraF
 
 
     }
-
 
 
     public void onClicked() {

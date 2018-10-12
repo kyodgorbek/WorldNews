@@ -1,8 +1,5 @@
 package yodgobekkomilov.edgar.com.worldnews.internet;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -12,12 +9,7 @@ public class NewsClient {
 
     /**
      * Get Retrofit Instance
-     *
-     *
      */
-
-
-
 
 
     public static Retrofit getRetrofitInstance() {

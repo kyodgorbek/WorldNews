@@ -19,11 +19,9 @@ import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -35,9 +33,9 @@ import yodgobekkomilov.edgar.com.worldnews.news.DetailActivity;
 public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder> {
 
     public static final String urlKey = "urlKey";
-    public static final String ImageKey="imageKey";
-    Context context;
+    public static final String ImageKey = "imageKey";
     private final List<Article> articleList;
+    Context context;
     private ClipboardManager myClipboard;
     private ClipData myClip;
 
@@ -64,13 +62,13 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
         SimpleDateFormat output = new SimpleDateFormat("dd/MM/yyyy");
 
         Date d = new Date();
-            try {
-                d = input.parse(article.getPublishedAt());
-            } catch (ParseException e) {
-                e.printStackTrace();
-            } catch (java.text.ParseException e) {
-                e.printStackTrace();
-            }
+        try {
+            d = input.parse(article.getPublishedAt());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        } catch (java.text.ParseException e) {
+            e.printStackTrace();
+        }
 
 
         String formatted = output.format(d);
@@ -81,8 +79,8 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
         newsViewHolder.articleDate.setText(formatted);
         //newsViewHolder.articleDate.setText(article.getPublishedAt());
         Picasso.get().load(article.getUrlToImage()).into(newsViewHolder.articleImage);
-        newsViewHolder.copy_Button.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
+        newsViewHolder.copy_Button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
 
 
                 myClipboard = (ClipboardManager) v.getContext().getSystemService(Context.CLIPBOARD_SERVICE);
@@ -90,7 +88,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
 
                 myClip = ClipData.newPlainText("label", newsViewHolder.articleTitle.getText().toString());
                 myClipboard.setPrimaryClip(myClip);
-                Toast.makeText(v.getContext(), "Copied to clipboard" , Toast.LENGTH_SHORT ).show();
+                Toast.makeText(v.getContext(), "Copied to clipboard", Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -103,7 +101,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
                 String articleTitle = article.getTitle();
                 sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, articleDescription);
                 sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, articleTitle);
-               v.getContext().startActivity((Intent.createChooser(sharingIntent, "Share using")));
+                v.getContext().startActivity((Intent.createChooser(sharingIntent, "Share using")));
             }
         });
         newsViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -113,7 +111,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
 //start the activity from the view/context
 
                 intent.putExtra("urlKey", article.getUrl());
-                intent.putExtra("imageKey", article.getUrlToImage());
+                //intent.putExtra("imageKey", article.getUrlToImage());
                 view.getContext().startActivity(intent);
             }
         });
@@ -121,14 +119,11 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
     }
 
 
-
-
     @Override
     public int getItemCount() {
 
         return articleList.size();
     }
-
 
 
     public final class NewsViewHolder extends RecyclerView.ViewHolder {
@@ -147,7 +142,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
         @BindView(R.id.article_Date)
         TextView articleDate;
         @BindView(R.id.share_button)
-       ImageButton shareButton;
+        ImageButton shareButton;
         @BindView(R.id.copy_Button)
         ImageButton copy_Button;
 
