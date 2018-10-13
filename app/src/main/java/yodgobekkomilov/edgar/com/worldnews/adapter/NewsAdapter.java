@@ -79,7 +79,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
         newsViewHolder.articleDate.setText(formatted);
         //newsViewHolder.articleDate.setText(article.getPublishedAt());
         Picasso.get().load(article.getUrlToImage()).into(newsViewHolder.articleImage);
-        newsViewHolder.copy_Button.setOnClickListener(new View.OnClickListener() {
+      newsViewHolder.copy_Button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
 
