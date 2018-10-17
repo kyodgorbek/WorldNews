@@ -8,9 +8,13 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import me.riddhimanadib.library.BottomBarHolderActivity;
+
+
+
 import me.riddhimanadib.library.NavigationPage;
+
+
 import yodgobekkomilov.edgar.com.worldnews.Pojo.Article;
 import yodgobekkomilov.edgar.com.worldnews.news.AllJazeeraFragment;
 import yodgobekkomilov.edgar.com.worldnews.news.BBCFragment;
@@ -23,7 +27,7 @@ public class MainActivity extends BottomBarHolderActivity implements AllJazeeraF
 
     //    private ApiService apiService;
     public static final String url_key = "urlKey";
-    final int Bottom_CAPACITY = 7;
+
     public ArrayList<Article> articleList = new ArrayList<>();
 
 
@@ -39,13 +43,13 @@ public class MainActivity extends BottomBarHolderActivity implements AllJazeeraF
 //        // using the (String name, Parcelable value) overload!
 //        startActivity(i);
 
-        NavigationPage page1 = new NavigationPage("All Jazeera", ContextCompat.getDrawable(this, R.drawable.alljazeera), AllJazeeraFragment.newInstance());
+        NavigationPage page1 = new NavigationPage("Al Jazeera", ContextCompat.getDrawable(this, R.drawable.ic_aljazeera), AllJazeeraFragment.newInstance());
         NavigationPage page2 = new NavigationPage("BBC", ContextCompat.getDrawable(this, R.drawable.bbc_icon), CNNFragment.newInstance());
-        NavigationPage page3 = new NavigationPage("CNN", ContextCompat.getDrawable(this, R.drawable.cnn_icon), AllJazeeraFragment.newInstance());
-        NavigationPage page4 = new NavigationPage("CBC", ContextCompat.getDrawable(this, R.drawable.cbc_icon), CBCNewsFragment.newInstance());
+        NavigationPage page3 = new NavigationPage("CNN", ContextCompat.getDrawable(this, R.drawable.ic_cnn), AllJazeeraFragment.newInstance());
+        NavigationPage page4 = new NavigationPage("CBC", ContextCompat.getDrawable(this, R.drawable.ic_cbc), CBCNewsFragment.newInstance());
         //NavigationPage page5 = new NavigationPage("Menu", ContextCompat.getDrawable(this, R.drawable.icon_menu), Menu.newInstance());
-        List<NavigationPage> navigationPages = new ArrayList<>(Bottom_CAPACITY);
-        Boolean navigation = navigationPages.size() > 6;
+        List<NavigationPage> navigationPages = new ArrayList<>();
+
         navigationPages.add(page1);
         navigationPages.add(page2);
         navigationPages.add(page3);
