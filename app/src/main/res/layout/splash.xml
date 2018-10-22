@@ -1,18 +1,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    >
-
-    <ImageView
-        android:id="@+id/logo_id"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="fitXY"
-        android:layout_centerInParent="true"
-        android:adjustViewBounds="true"
-        android:background="@drawable/world_news"/>
-
+    android:background="@drawable/world_news"
+    android:gravity="center">
 
 
 </RelativeLayout>

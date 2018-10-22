@@ -79,7 +79,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
         newsViewHolder.articleDate.setText(formatted);
         //newsViewHolder.articleDate.setText(article.getPublishedAt());
         Picasso.get().load(article.getUrlToImage()).into(newsViewHolder.articleImage);
-      newsViewHolder.copy_Button.setOnClickListener(new View.OnClickListener() {
+        newsViewHolder.copy_Button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
 
@@ -108,10 +108,9 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), DetailActivity.class);
-//start the activity from the view/context
 
                 intent.putExtra("urlKey", article.getUrl());
-                //intent.putExtra("imageKey", article.getUrlToImage());
+
                 view.getContext().startActivity(intent);
             }
         });
@@ -127,8 +126,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
 
 
     public final class NewsViewHolder extends RecyclerView.ViewHolder {
-        // TextView articleAuthor, articleTitle, articleDescription, articleUrl;
-        //  ImageView articleImage;
+
 
         @BindView(R.id.article_Image)
         ImageView articleImage;

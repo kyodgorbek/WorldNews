@@ -8,13 +8,9 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import me.riddhimanadib.library.BottomBarHolderActivity;
-
-
-
 import me.riddhimanadib.library.NavigationPage;
-
-
 import yodgobekkomilov.edgar.com.worldnews.Pojo.Article;
 import yodgobekkomilov.edgar.com.worldnews.news.AllJazeeraFragment;
 import yodgobekkomilov.edgar.com.worldnews.news.BBCFragment;
@@ -25,7 +21,6 @@ import yodgobekkomilov.edgar.com.worldnews.news.DetailActivity;
 
 public class MainActivity extends BottomBarHolderActivity implements AllJazeeraFragment.OnFragmentInteractionListener, BBCFragment.OnFragmentInteractionListener, CNNFragment.OnFragmentInteractionListener, CBCNewsFragment.OnFragmentInteractionListener {
 
-    //    private ApiService apiService;
     public static final String url_key = "urlKey";
 
     public ArrayList<Article> articleList = new ArrayList<>();
@@ -34,14 +29,13 @@ public class MainActivity extends BottomBarHolderActivity implements AllJazeeraF
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+
 
         Article article = new Article(Parcel.obtain());
         article.setUrl(article.getUrl());
         Intent i = new Intent(this, DetailActivity.class);
         i.putExtra("urlKey", article);
-//        // using the (String name, Parcelable value) overload!
-//        startActivity(i);
+
 
         NavigationPage page1 = new NavigationPage("Al Jazeera", ContextCompat.getDrawable(this, R.drawable.ic_aljazeera), AllJazeeraFragment.newInstance());
         NavigationPage page2 = new NavigationPage("BBC", ContextCompat.getDrawable(this, R.drawable.bbc_icon), CNNFragment.newInstance());

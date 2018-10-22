@@ -6,9 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.ImageView;
-
-import com.squareup.picasso.Picasso;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -18,7 +15,6 @@ import yodgobekkomilov.edgar.com.worldnews.R;
 public class DetailActivity extends AppCompatActivity {
     @BindView(R.id.article)
     public WebView article_webview;
-
 
 
     @Override
@@ -32,15 +28,10 @@ public class DetailActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        //  Toolbar toolbar = (Toolbar) findViewById(R.id.toolbars);
 
-        // setSupportActionBar(toolbar);
-        //Your toolbar is now an action bar and you can use it like you always do, for example:
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         article_webview.getSettings().setJavaScriptEnabled(true);
         String url = getIntent().getExtras().getString("urlKey");
-      //  String imageUrl = getIntent().getExtras().getString("imageUrl");
-        //Picasso.get().load(imageUrl).into(article_Image);
+
         article_webview.setWebViewClient(new WebViewClient());
 
         article_webview.loadUrl(url);
